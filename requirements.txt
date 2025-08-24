@@ -7,3 +7,4 @@ imbalanced-learn==0.14.0
 python-dotenv==1.1.1
 matplotlib==3.10.5
 seaborn==0.13.2
+streamlit==1.48.1
