@@ -77,7 +77,6 @@ All endpoints require an API key passed in the `X-API-Key` header.
 
 ### Available Endpoints
 - `GET /`: Home endpoint
-  - Returns: Basic API information and status
 
 - `POST /predict/forest`: Get prediction using Random Forest model
 
