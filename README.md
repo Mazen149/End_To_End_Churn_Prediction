@@ -72,8 +72,31 @@ docker run -p 8000:8000 customer-churn
 
 ## API Endpoints
 
-- `GET /`: Home endpoint
-- `POST /predict/forest`: Get prediction and probability using Random Forest model
-- `POST /predict/xgboost`: Get prediction and probability using XGBoost model
+### Authentication
+All endpoints require an API key passed in the `X-API-Key` header.
 
-Note: For security, API endpoints require an API key to be passed in the `X-API-Key` header.
+### Available Endpoints
+- `GET /`: Home endpoint
+  - Returns: Basic API information and status
+
+- `POST /predict/forest`: Get prediction using Random Forest model
+  - Request Body:
+    ```json
+    {
+        "CreditScore": int,
+        "Geography": "France"|"Germany"|"Spain",
+        "Gender": "Male"|"Female",
+        "Age": int,
+        "Tenure": int,
+        "Balance": float,
+        "NumOfProducts": int,
+        "HasCrCard": 0|1,
+        "IsActiveMember": 0|1,
+        "EstimatedSalary": float
+    }
+    ```
+  - Returns: Prediction (0/1) and probability
+
+- `POST /predict/xgboost`: Get prediction using XGBoost model
+  - Request Body: Same as forest endpoint
+  - Returns: Prediction (0/1) and probability

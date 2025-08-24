@@ -2,7 +2,7 @@ from pydantic import BaseModel, Field
 from typing import Literal
 
 class CustomerData(BaseModel):
-    CreditScore: int = Field(description="Credit score of the customer")
+    CreditScore: int = Field(ge=0, le=1000,description="Credit score of the customer")
     Geography: Literal["France", "Germany", "Spain"] = Field(description="Customer's country")
     Gender: Literal["Male", "Female"] = Field(description="Customer's gender")
     Age: int = Field(description="Customer's age", ge=18, le=100)
