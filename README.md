@@ -1,1 +1,79 @@
-# Customer Curn Prediction
+# Customer Churn Prediction
+## Description
+A machine learning application that predicts customer churn for a bank using Random Forest and XGBoost models. During model evaluation, Logistic Regression was tested with various class balancing techniques but showed significantly lower performance. The project implements the two best performing models: Random Forest and XGBoost, which both demonstrated superior predictive capabilities. The application includes both a FastAPI backend service and a Streamlit web interface.
+
+## Features
+- Two ML models for prediction: Random Forest and XGBoost
+- RESTful API endpoints with FastAPI
+- Interactive web interface using Streamlit
+- Secure API endpoints with API key authentication
+- Docker support for containerization
+
+## Live Demo
+Try out the application directly through my hosted Streamlit app:
+[Customer Churn Predictor](https://end-to-end-churn-prediction.streamlit.app/)
+
+## Project Structure
+```
+├── dataset/
+│   └── Churn_Modelling.csv
+├── models/
+│   ├── forest_tuned.pkl
+│   ├── preprocessor.pkl
+│   └── xgb-tuned.pkl
+├── notebooks/
+│   └── notebook.ipynb
+├── utils/
+│   ├── config.py
+│   ├── CustomerData.py
+│   └── inference.py
+├── main.py
+├── streamlit_app.py
+├── requirements.txt
+└── Dockerfile
+```
+
+## Installation
+
+1. Clone the repository
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+## Environment Variables
+Create a `.env` file with the following variables:
+```
+APP_NAME="Customer-Churn-Prediction"
+VERSION="1.0"
+SECRET_KEY_TOKEN="your-secret-key"
+```
+
+## Usage
+
+### FastAPI Backend
+To run the FastAPI backend:
+```bash
+uvicorn main:app --host 0.0.0.0 --port 8000
+```
+
+### Streamlit Interface
+To run the Streamlit web interface:
+```bash
+streamlit run streamlit_app.py
+```
+
+### Docker
+To build and run using Docker:
+```bash
+docker build -t customer-churn .
+docker run -p 8000:8000 customer-churn
+```
+
+## API Endpoints
+
+- `GET /`: Home endpoint
+- `POST /predict/forest`: Get prediction and probability using Random Forest model
+- `POST /predict/xgboost`: Get prediction and probability using XGBoost model
+
+Note: For security, API endpoints require an API key to be passed in the `X-API-Key` header.
