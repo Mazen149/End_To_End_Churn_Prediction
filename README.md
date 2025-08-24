@@ -80,23 +80,5 @@ All endpoints require an API key passed in the `X-API-Key` header.
   - Returns: Basic API information and status
 
 - `POST /predict/forest`: Get prediction using Random Forest model
-  - Request Body:
-    ```json
-    {
-        "CreditScore": int,
-        "Geography": "France"|"Germany"|"Spain",
-        "Gender": "Male"|"Female",
-        "Age": int,
-        "Tenure": int,
-        "Balance": float,
-        "NumOfProducts": int,
-        "HasCrCard": 0|1,
-        "IsActiveMember": 0|1,
-        "EstimatedSalary": float
-    }
-    ```
-  - Returns: Prediction (0/1) and probability
 
 - `POST /predict/xgboost`: Get prediction using XGBoost model
-  - Request Body: Same as forest endpoint
-  - Returns: Prediction (0/1) and probability
